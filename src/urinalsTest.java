@@ -1,14 +1,25 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-
 public class urinalsTest {
-    private final urinals urine = new urinals();
+    private urinals urine;
+
+    @BeforeEach
+    public void setUrine() {
+        urine = new urinals();
+    }
 
     @Test
-    void goodString() {
-        assertEquals(2, "====== Mike Findler == TEST TWO EXECUTED =======");
+    void goodStringValid() {
+        assertEquals(true, urine.goodString("====== Saurav Sarkar == TEST FIRST EXECUTED ======="));
     }
+
+    @Test
+    void goodStringInValid() {
+        assertEquals(false, urine.goodString("====== Saurav Sarkar == TEST TWO EXECUTED ======="));
+    }
+
 
 }
