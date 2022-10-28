@@ -1,7 +1,11 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class urinalsTest {
     private urinals urine;
@@ -57,4 +61,35 @@ public class urinalsTest {
         assertEquals(-1, urine.getFreeUrinals("011"));
     }
 
+    @Test
+    void readFromFileOne() {
+        System.out.println("====== Saurav Sarkar == TEST ONE EXECUTED - Valid Case =======");
+        String filePath = "urinal.dat";
+        assertEquals(new String[]{"10001", "1001", "00000", "0000", "01000", "011"}, urine.readFromFile(filePath));
+    }
+
+    @Test
+    void readFromFileTwo() {
+        System.out.println("====== Saurav Sarkar == TEST TWO EXECUTED - File doesn't exist =======");
+        String filePath = "urinal.dat1";
+        assertThrows(FileNotFoundException.class, () -> {
+            urine.readFromFile(filePath);
+        });
+    }
+
+    @Test
+    void readFromFileThree() {
+        System.out.println("====== Saurav Sarkar == TEST THREE EXECUTED - Empty file =======");
+        String filePath = "urinal.dat";
+        assertEquals(new String[]{}, urine.readFromFile(filePath));
+    }
+
+    @Test
+    void readFromFileFour() {
+        System.out.println("====== Saurav Sarkar == TEST FOUR EXECUTED - IOException =======");
+        String filePath = "urinal";
+        assertThrows(IOException.class, () -> {
+            urine.readFromFile(filePath);
+        });
+    }
 }

@@ -2,7 +2,7 @@
  * The urinals program implements an application that
  * simply provides the number of available urinals positions for the given input.
  *
- * @author  Saurav Sakar
+ * @author Saurav Sakar
  * @version 1.0
  */
 public class urinals {
@@ -15,5 +15,9 @@ public class urinals {
 
     int getFreeUrinals(String str) {
         return 0;
+    }
+
+    String[] readFromFile(String filepath) {
+        return null;
     }
 }
