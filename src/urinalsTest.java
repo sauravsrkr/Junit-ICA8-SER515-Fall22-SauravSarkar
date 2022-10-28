@@ -15,15 +15,25 @@ public class urinalsTest {
         urine = new urinals();
     }
 
-//    @Test
-//    void goodStringValid() {
-//        assertEquals(true, urine.goodString("====== Saurav Sarkar == TEST FIRST EXECUTED ======="));
-//    }
-//
-//    @Test
-//    void goodStringInValid() {
-//        assertEquals(false, urine.goodString("====== Saurav Sarkar == TEST TWO EXECUTED ======="));
-//    }
+    @Test
+    void goodStringOne() {
+        System.out.println("====== Saurav Sarkar == TEST ONE EXECUTED =======");
+        assertEquals(true, urine.goodString("1010"));
+    }
+
+    @Test
+    void goodStringTwo() {
+        System.out.println("====== Saurav Sarkar == TEST TWO EXECUTED =======");
+        assertEquals(false, urine.goodString(""));
+    }
+
+    @Test
+    void goodStringThree() {
+        System.out.println("====== Saurav Sarkar == TEST THREE EXECUTED - NumberFormatException =======");
+        assertThrows(NumberFormatException.class, () -> {
+            urine.goodString("abc");
+        });
+    }
 
     @Test
     void getFreeUrinalsOne() {

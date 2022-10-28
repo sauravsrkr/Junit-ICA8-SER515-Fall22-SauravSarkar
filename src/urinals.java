@@ -9,9 +9,9 @@ public class urinals {
     public static void main(String[] args) {
     }
 
-//    Boolean goodString(String str) {  // checks to see if valid string
-//        return true;
-//    }
+    Boolean goodString(String str) {  // checks to see if valid string
+        return true;
+    }
 
     int getFreeUrinals(String str) {
         return 0;
@@ -20,4 +20,6 @@ public class urinals {
     String[] readFromFile(String filepath) {
         return null;
     }
+
+
 }
