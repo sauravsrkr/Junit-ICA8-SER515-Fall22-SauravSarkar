@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class urinalsTest {
-    private urinals urine;
+    private checkUrinals urine;
 
     @BeforeEach
     public void setUrine() {
-        urine = new urinals();
+        urine = new checkUrinals();
     }
 
     @Test
@@ -101,5 +101,37 @@ public class urinalsTest {
         assertThrows(IOException.class, () -> {
             urine.readFromFile(filePath);
         });
+    }
+
+    @Test
+    void writeToFileOne() {
+        System.out.println("====== Saurav Sarkar == TEST ONE EXECUTED - File is duplicate =======");
+        urine.writeToFile(1, new int[]{1, 2, 3});
+        assertThrows(Exception.class, () -> {
+            urine.writeToFile(1, new int[]{1, 2, 3});
+        });
+    }
+
+    @Test
+    void writeToFileTwo() {
+        System.out.println("====== Saurav Sarkar == TEST TWO EXECUTED - Bad File Name =======");
+        assertThrows(Exception.class, () -> {
+            urine.writeToFile(-1, new int[]{1, 2, 3});
+        });
+    }
+
+    @Test
+    void writeToFileThree() {
+        System.out.println("====== Saurav Sarkar == TEST THREE EXECUTED - IOException =======");
+        assertThrows(IOException.class, () -> {
+            urine.writeToFile(0, new int[]{1, 2, 3});
+        });
+    }
+
+    @Test
+    void writeToFileFour() {
+        System.out.println("====== Saurav Sarkar == TEST THREE EXECUTED - Valid =======");
+        // does not throw any error
+        urine.writeToFile(0, new int[]{1, 2, 3});
     }
 }
