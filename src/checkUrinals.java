@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class checkUrinals {
@@ -42,8 +47,16 @@ public class checkUrinals {
         return count;
     }
 
-    String[] readFromFile(String filepath) {
-        return null;
+    String[] readFromFile(String filepath) throws IOException {
+        List<String> inputStrings = new ArrayList<>();
+        BufferedReader bf = new BufferedReader(new FileReader(filepath));
+        String l = bf.readLine();
+        while (l != null) {
+            inputStrings.add(l);
+            l = bf.readLine();
+        }
+        bf.close();
+        return inputStrings.toArray(new String[0]);
     }
 
     void writeToFile(int counter, int[] data) {

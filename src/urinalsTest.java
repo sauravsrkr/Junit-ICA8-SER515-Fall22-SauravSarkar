@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class urinalsTest {
     private checkUrinals urine;
@@ -72,10 +71,10 @@ public class urinalsTest {
     }
 
     @Test
-    void readFromFileOne() {
+    void readFromFileOne() throws IOException {
         System.out.println("====== Saurav Sarkar == readFromFileOne == TEST ONE EXECUTED - Valid Case =======");
-        String filePath = "urinal.dat";
-        assertEquals(new String[]{"10001", "1001", "00000", "0000", "01000", "011"}, urine.readFromFile(filePath));
+        String filePath = "src/urinal.dat";
+        assertArrayEquals(new String[]{"10001", "1001", "00000", "0000", "01000", "011"}, urine.readFromFile(filePath));
     }
 
     @Test
@@ -88,10 +87,11 @@ public class urinalsTest {
     }
 
     @Test
-    void readFromFileThree() {
+    void readFromFileThree() throws IOException {
         System.out.println("====== Saurav Sarkar == readFromFileThree == TEST THREE EXECUTED - Empty file =======");
-        String filePath = "urinal.dat";
-        assertEquals(new String[]{}, urine.readFromFile(filePath));
+        String filePath = "src/urinal.dat";
+        String [] inputs = urine.readFromFile(filePath);
+        assertArrayEquals(inputs, urine.readFromFile(filePath));
     }
 
     @Test

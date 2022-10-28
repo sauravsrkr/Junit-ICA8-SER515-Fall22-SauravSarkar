@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Scanner;
  * @author Saurav Sakar
  */
 public class urinals {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         checkUrinals urinals = new checkUrinals();
         while (true) {
             System.out.println("\n===========");
@@ -27,7 +28,7 @@ public class urinals {
                     System.out.print("Free urinals : " + count + "\n");
                     break;
                 case "2":
-//                String[] lines = urinals.readFromFile("src/main/resources/urinal.dat");
+                    String[] lines = urinals.readFromFile("src/urinal.dat");
 //                String outFile = urinals.writeToFile(lines);
 //                System.out.println("Output is written to " + outFile);
                     break;
