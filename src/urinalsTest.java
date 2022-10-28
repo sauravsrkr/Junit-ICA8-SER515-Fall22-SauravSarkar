@@ -105,33 +105,16 @@ public class urinalsTest {
 
     @Test
     void writeToFileOne() {
-        System.out.println("====== Saurav Sarkar == writeToFileOne == TEST ONE EXECUTED - File is duplicate =======");
-        urine.writeToFile(1, new int[]{1, 2, 3});
+        System.out.println("====== Saurav Sarkar == writeToFileThree == TEST ONE EXECUTED - Exception =======");
         assertThrows(Exception.class, () -> {
-            urine.writeToFile(1, new int[]{1, 2, 3});
+            urine.writeToFile(new String[]{"abc", "1001", "00000", "0000", "01000", "011"});
         });
     }
 
     @Test
-    void writeToFileTwo() {
-        System.out.println("====== Saurav Sarkar == writeToFileTwo == TEST TWO EXECUTED - Bad File Name =======");
-        assertThrows(Exception.class, () -> {
-            urine.writeToFile(-1, new int[]{1, 2, 3});
-        });
-    }
-
-    @Test
-    void writeToFileThree() {
-        System.out.println("====== Saurav Sarkar == writeToFileThree == TEST THREE EXECUTED - IOException =======");
-        assertThrows(IOException.class, () -> {
-            urine.writeToFile(0, new int[]{1, 2, 3});
-        });
-    }
-
-    @Test
-    void writeToFileFour() {
-        System.out.println("====== Saurav Sarkar == writeToFileFour == TEST THREE EXECUTED - Valid =======");
+    void writeToFileTwo() throws IOException {
+        System.out.println("====== Saurav Sarkar == writeToFileFour == TEST TWO EXECUTED - Valid =======");
         // does not throw any error
-        urine.writeToFile(0, new int[]{1, 2, 3});
+        urine.writeToFile(new String[]{"10001", "1001", "00000", "0000", "01000", "011"});
     }
 }

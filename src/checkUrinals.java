@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -59,7 +61,31 @@ public class checkUrinals {
         return inputStrings.toArray(new String[0]);
     }
 
-    void writeToFile(int counter, int[] data) {
-        return;
+    void writeToFile(String[] inputs) throws IOException {
+        String write = writeToOutputFile();
+        File of = new File("./" + write);
+        StringBuilder output = new StringBuilder();
+        for (String l : inputs) {
+            if (goodString(l))
+                output.append(this.getFreeUrinals(l)).append("\n");
+        }
+        Files.write(of.toPath(), output.toString().getBytes());
+        System.out.println("Output written to " + write);
+    }
+
+    String writeToOutputFile() {
+        File f = new File("./rule.txt");
+        if (!f.exists()) return "rule.txt";
+        File fol = new File("./");
+        File[] files = fol.listFiles();
+        int count = 0;
+        assert files != null;
+        for (File x : files) {
+            if (x.isFile()) {
+                String fileName = x.getName();
+                if (fileName.contains("rule")) count ++;
+            }
+        }
+        return "rule" + count + ".txt";
     }
 }

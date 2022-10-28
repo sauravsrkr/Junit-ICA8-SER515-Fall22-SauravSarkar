@@ -17,7 +17,7 @@ public class urinals {
             Scanner sc = new Scanner(System.in);
             String next = sc.nextLine();
             switch (next) {
-                case "1":
+                case "1" -> {
                     System.out.print("Provide input string: ");
                     String inputString = sc.nextLine();
                     if (!urinals.goodString(inputString)) {
@@ -26,15 +26,15 @@ public class urinals {
                     }
                     int count = urinals.getFreeUrinals(inputString);
                     System.out.print("Free urinals : " + count + "\n");
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     String[] lines = urinals.readFromFile("src/urinal.dat");
-//                String outFile = urinals.writeToFile(lines);
-//                System.out.println("Output is written to " + outFile);
-                    break;
-                case "3":
+                    urinals.writeToFile(lines);
+                }
+                case "3" -> {
                     System.out.println("Exit...");
                     System.exit(1);
+                }
             }
         }
     }
